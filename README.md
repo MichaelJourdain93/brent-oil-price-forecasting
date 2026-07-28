@@ -8,10 +8,8 @@
 
 🔗 **[Acesse o app ao vivo](https://brentoilprice-hs7hlppw4pfznvdxaappeoh.streamlit.app/)** (Streamlit Community Cloud)
 
-## 👥 Autoria
-
-[Michael Jourdain Gbedjinou](https://github.com/MichaelJourdain93) — Pós-Tech Data Analytics (FIAP).
-
+##
+![Autor](https://img.shields.io/badge/Autor-Michael%20Jourdain%20Gbedjinou-lightgrey?style=for-the-badge)
 ## 🎯 Problema de negócio
 
 Consultoria contratada por um cliente do segmento de energia para analisar a série histórica do preço do petróleo Brent (fonte: IPEA) e entregar:
