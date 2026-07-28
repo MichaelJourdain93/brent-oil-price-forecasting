@@ -6,6 +6,8 @@
 ![PowerBI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi&logoColor=black)
 ![Status](https://img.shields.io/badge/Status-Concluído-brightgreen)
 
+🔗 **[Acesse o app ao vivo](https://brentoilprice-hs7hlppw4pfznvdxaappeoh.streamlit.app/)** (Streamlit Community Cloud)
+
 ## 🎯 Problema de negócio
 
 Consultoria contratada por um cliente do segmento de energia para analisar a série histórica do preço do petróleo Brent (fonte: IPEA) e entregar:
@@ -51,6 +53,8 @@ Não há orquestração/agendamento neste projeto — é um MVP de forecasting s
 | Serialização | **joblib** | Persistência do modelo treinado |
 
 ## 💻 Como rodar localmente
+
+> Prefere só testar sem instalar nada? Acesse a versão publicada: https://brentoilprice-hs7hlppw4pfznvdxaappeoh.streamlit.app/
 
 ```bash
 git clone https://github.com/MichaelJourdain93/brent_oil_price.git
