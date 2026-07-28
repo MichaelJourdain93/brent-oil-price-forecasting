@@ -8,6 +8,10 @@
 
 🔗 **[Acesse o app ao vivo](https://brentoilprice-hs7hlppw4pfznvdxaappeoh.streamlit.app/)** (Streamlit Community Cloud)
 
+## 👥 Autoria
+
+[Michael Jourdain Gbedjinou](https://github.com/MichaelJourdain93) — Pós-Tech Data Analytics (FIAP).
+
 ## 🎯 Problema de negócio
 
 Consultoria contratada por um cliente do segmento de energia para analisar a série histórica do preço do petróleo Brent (fonte: IPEA) e entregar:
@@ -82,10 +86,6 @@ O dashboard executivo (`reports/Dashboard.pbix`) é aberto no Power BI Desktop.
 - [ ] Automatizar a atualização da série histórica (hoje é um CSV/XLSX estático)
 - [ ] Publicar o app Streamlit (Community Cloud) para demo sem instalação local
 - [ ] Adicionar testes para a função de carregamento do modelo e geração de forecast
-
-## 👥 Autoria
-
-[Michael Jourdain Gbedjinou](https://github.com/MichaelJourdain93) — Pós-Tech Data Analytics (FIAP).
 
 ## 📁 Estrutura do projeto
 
