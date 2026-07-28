@@ -1,3 +1,116 @@
+<details name="lang-toggle">
+<summary><b>🇺🇸 English</b></summary>
+
+# 🛢️ Brent Crude Oil Price Forecasting
+
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
+![Prophet](https://img.shields.io/badge/Prophet-Forecasting-0468BF)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)
+![PowerBI](https://img.shields.io/badge/Power%20BI-Dashboard-F2C811?logo=powerbi&logoColor=black)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+
+🔗 **[Live app](https://brentoilprice-hs7hlppw4pfznvdxaappeoh.streamlit.app/)** (Streamlit Community Cloud)
+
+##
+![Author](https://img.shields.io/badge/Author-Michael%20Jourdain%20Gbedjinou-lightgrey?style=for-the-badge)
+## 🎯 Business problem
+
+Consulting engagement for a client in the energy sector to analyze the historical Brent crude oil price series (source: IPEA) and deliver:
+
+1. An **interactive dashboard** with storytelling and insights on price variation (geopolitical events, economic crises, global energy demand).
+2. A **Machine Learning model** for daily price forecasting (time series).
+3. A **production MVP** of the model, via Streamlit.
+
+## 🏗️ Architecture / Data flow
+
+```mermaid
+flowchart LR
+    A[brent_oil_prices\nIPEA / daily historical series] --> B[Notebook\nPredicao_precos_brent.ipynb]
+    B --> C[Prophet\nwith historical events as regressors:\nGulf War, 2008 Crisis,\nOPEC cut, Russia-Ukraine War,\nMiddle East conflict, COVID-19,\ngas price shock]
+    C --> D[models/prophet_model_final.pkl]
+    D --> E[App_Streamlit.py\non-demand forecasting MVP]
+    A --> F[Power BI Dashboard\nreports/Dashboard.pbix]
+```
+
+## ⚙️ Execution phases
+
+### 1. Ingestion
+Daily historical series of the Brent crude oil price (date + price in dollars), consolidated in `data/brent_oil_prices.csv`/`.xlsx`.
+
+### 2. Transformation and modeling
+In the `notebooks/Predicao_precos_brent.ipynb` notebook, the series is modeled with **Prophet**, including as *holidays/regressors* a list of historical and geopolitical events relevant to the oil price — Gulf War (1990), 2008 financial crisis, OPEC production cut (2023), Russia-Ukraine War (2023), Middle East conflict (2024), COVID-19 pandemic (2020), and the gas price shock (2021). This is the project's core technique: instead of treating the series as merely seasonal, the model explicitly incorporates known external shocks.
+
+### 3. Orchestration
+There is no orchestration/scheduling in this project — it's an on-demand forecasting MVP: the model is trained in the notebook, serialized (`models/prophet_model_final.pkl`), and loaded by the Streamlit app on every run.
+
+### 4. Visualization
+- **Streamlit (`App_Streamlit.py`):** the user chooses how many days to forecast (1-365), the app generates the forecast with the saved Prophet model, and displays a table + interactive chart (`plot_plotly`).
+- **Power BI (`reports/Dashboard.pbix`):** dashboard with the storytelling and insights on historical price variation, required by the challenge statement.
+
+## 🛠️ Tech stack and rationale
+
+| Layer | Technology | Why |
+|---|---|---|
+| Time-series modeling | **Prophet** | Handles seasonality well + allows modeling known external shocks via `holidays` |
+| Data manipulation | **pandas** | ETL of the historical series |
+| App / MVP | **Streamlit** | Fast deployment of the model as an interactive tool |
+| BI | **Power BI** | Executive dashboard with insight storytelling |
+| Serialization | **joblib** | Persistence of the trained model |
+
+## 💻 Running locally
+
+> Just want to try it without installing anything? Check out the published version: https://brentoilprice-hs7hlppw4pfznvdxaappeoh.streamlit.app/
+
+```bash
+git clone https://github.com/MichaelJourdain93/brent-oil-price-forecasting.git
+cd brent-oil-price-forecasting
+
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+
+pip install -r requirements.txt
+
+streamlit run App_Streamlit.py
+```
+
+The executive dashboard (`reports/Dashboard.pbix`) opens in Power BI Desktop.
+
+## 📈 Results / Insights
+
+- The Brent price is strongly influenced by identifiable external shocks — the model explicitly incorporates 7 historical events (wars, financial crises, OPEC decisions, pandemic) as regressors, instead of relying only on seasonality.
+- The MVP allows configurable forecasting (1 to 365 days) on demand, with no need to retrain the model on every query.
+- The full storytelling with insights on the main price-variation drivers is in the Power BI dashboard (`reports/Dashboard.pbix`).
+
+## 🔭 Next steps
+
+- [ ] Formalize the model comparison (there was a comparison script with a bug in the metrics — it was removed in this cleanup; worth redoing with proper backtesting, e.g. `sklearn.model_selection.TimeSeriesSplit`)
+- [ ] Automate the historical series update (today it's a static CSV/XLSX)
+- [ ] Publish the Streamlit app (Community Cloud) for a demo without local installation
+- [ ] Add tests for the model-loading and forecast-generation functions
+
+## 📁 Project structure
+
+```
+brent-oil-price-forecasting/
+├── README.md
+├── requirements.txt
+├── App_Streamlit.py
+├── notebooks/
+│   └── Predicao_precos_brent.ipynb
+├── data/
+│   ├── brent_oil_prices.csv
+│   └── brent_oil_prices.xlsx
+├── models/
+│   └── prophet_model_final.pkl
+└── reports/
+    └── Dashboard.pbix
+```
+
+</details>
+
+<details open name="lang-toggle">
+<summary><b>🇧🇷 Português</b></summary>
+
 # 🛢️ Previsão do Preço do Petróleo Brent
 
 ![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
@@ -59,8 +172,8 @@ Não há orquestração/agendamento neste projeto — é um MVP de forecasting s
 > Prefere só testar sem instalar nada? Acesse a versão publicada: https://brentoilprice-hs7hlppw4pfznvdxaappeoh.streamlit.app/
 
 ```bash
-git clone https://github.com/MichaelJourdain93/brent_oil_price.git
-cd brent_oil_price
+git clone https://github.com/MichaelJourdain93/brent-oil-price-forecasting.git
+cd brent-oil-price-forecasting
 
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
@@ -102,3 +215,5 @@ brent_oil_price/
 └── reports/
     └── Dashboard.pbix
 ```
+
+</details>
