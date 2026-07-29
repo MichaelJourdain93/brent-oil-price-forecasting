@@ -81,12 +81,6 @@ The executive dashboard (`reports/Dashboard.pbix`) opens in Power BI Desktop.
 - The MVP allows configurable forecasting (1 to 365 days) on demand, with no need to retrain the model on every query.
 - The full storytelling with insights on the main price-variation drivers is in the Power BI dashboard (`reports/Dashboard.pbix`).
 
-## 🔭 Next steps
-
-- [ ] Formalize the model comparison (there was a comparison script with a bug in the metrics — it was removed in this cleanup; worth redoing with proper backtesting, e.g. `sklearn.model_selection.TimeSeriesSplit`)
-- [ ] Automate the historical series update (today it's a static CSV/XLSX)
-- [ ] Publish the Streamlit app (Community Cloud) for a demo without local installation
-- [ ] Add tests for the model-loading and forecast-generation functions
 
 ## 📁 Project structure
 
